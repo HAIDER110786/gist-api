@@ -2,12 +2,22 @@ import React from 'react'
 import styled from 'styled-components'
 import Octicon from 'react-octicon'
 
-const Search = () => {
+const Search = ({setIsSearched}) => {
+
+  const handleKeyUp = e => {
+
+    //removing the leading and trailing spaces and saving in a variable
+    const textToBeSearched = e.target.value.trim();
+
+    //setIsSearched is called if/when the Enter key is pressed
+    e.key === 'Enter' && setIsSearched(textToBeSearched);
+  }
+
   return (
     <Wrapper>
       <InputBox>
-      <Octicon name="search" />
-      <Input placeholder="Search Gists for the username"/>
+      <Octicon name="search"/>
+      <Input placeholder="Search Gists for the username" onKeyUp={handleKeyUp}/>
       </InputBox>
     </Wrapper>
   )

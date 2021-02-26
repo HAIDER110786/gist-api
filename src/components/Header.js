@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import Octicon from 'react-octicon'
 import Search from './Search';
 
-function Header() {
+function Header({setIsSearched}) {
   return (
     <Wrapper>
       <Octicon name="mark-github" mega/>
-      <Search />
+      <Search setIsSearched={setIsSearched}/>
     </Wrapper>
   )
 }
